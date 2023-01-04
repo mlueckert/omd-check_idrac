@@ -1,0 +1,9 @@
+/.vscode
+/controller_response.json
+/dellsystem_response.json
+/disk_response.json
+/GetStorageInventoryREDFISH.py
+/health_response.json
+/memory_response.json
+/powersupply_response.json
+/version_response.json
