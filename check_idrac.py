@@ -23,8 +23,8 @@ class Colors(Enum):
 
 class ExitCodes(Enum):
     NAGIOS_OK = 0
-    NAGIOS_CRITICAL = 1
-    NAGIOS_WARNING = 2
+    NAGIOS_WARNING = 1
+    NAGIOS_CRITICAL = 2
     NAGIOS_UNKNOWN = 3
 
 
