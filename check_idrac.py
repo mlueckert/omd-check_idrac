@@ -94,14 +94,14 @@ def mode_disk(session, args):
             elif status in [None, 'Empty']:
                 color = Colors.NAGIOS_UNKNOWN.value
                 unknown_counter += 1
-                exitcode.append(ExitCodes.NAGIOS_UNKNOWN)
+                exitcode.append(ExitCodes.NAGIOS_UNKNOWN.value)
             elif status in ['Warning']:
                 color = Colors.NAGIOS_WARNING.value
                 warn_counter += 1
-                exitcode.append(ExitCodes.NAGIOS_WARNING)
+                exitcode.append(ExitCodes.NAGIOS_WARNING.value)
             else:
                 state = "CRITICAL"
-                exitcode.append(ExitCodes.NAGIOS_CRITICAL)
+                exitcode.append(ExitCodes.NAGIOS_CRITICAL.value)
                 color = Colors.NAGIOS_CRITICAL.value
             component_counter += 1
             output_list.append('<tr><td>{}</td><td>{}</td><td style="background-color:{}">{}</td></tr>'.format(
@@ -136,14 +136,14 @@ def mode_powersupply(session, args):
         elif status in [None, 'Empty']:
             color = '#eb7d34'
             unknown_counter += 1
-            exitcode.append(3)
+            exitcode.append(ExitCodes.NAGIOS_UNKNOWN.value)
         elif status in ['Warning']:
             color = '#ffa500'
             warn_counter += 1
-            exitcode.append(2)
+            exitcode.append(ExitCodes.NAGIOS_WARNING.value)
         else:
             state = "CRITICAL"
-            exitcode.append(1)
+            exitcode.append(ExitCodes.NAGIOS_CRITICAL.value)
             color = '#ff5b33'
         component_counter += 1
         output_list.append('<tr><td>{}</td><td>{}</td><td style="background-color:{}">{}</td></tr>'.format(
@@ -179,14 +179,14 @@ def mode_memory(session, args):
         elif status in [None, 'Empty']:
             color = '#eb7d34'
             unknown_counter += 1
-            exitcode.append(3)
+            exitcode.append(ExitCodes.NAGIOS_UNKNOWN.value)
         elif status in ['Warning']:
             color = '#ffa500'
             warn_counter += 1
-            exitcode.append(2)
+            exitcode.append(ExitCodes.NAGIOS_WARNING.value)
         else:
             state = "CRITICAL"
-            exitcode.append(1)
+            exitcode.append(ExitCodes.NAGIOS_CRITICAL.value)
             color = '#ff5b33'
         component_counter += 1
         output_list.append('<tr><td>{}</td><td>{}</td><td style="background-color:{}">{}</td></tr>'.format(
@@ -222,14 +222,14 @@ def mode_thermal(session, args):
         elif status in [None, 'Empty']:
             color = '#eb7d34'
             unknown_counter += 1
-            exitcode.append(3)
+            exitcode.append(ExitCodes.NAGIOS_UNKNOWN.value)
         elif status in ['Warning']:
             color = '#ffa500'
             warn_counter += 1
-            exitcode.append(2)
+            exitcode.append(ExitCodes.NAGIOS_WARNING.value)
         else:
             state = "CRITICAL"
-            exitcode.append(1)
+            exitcode.append(ExitCodes.NAGIOS_CRITICAL.value)
             color = '#ff5b33'
         component_counter += 1
         output_list.append('<tr><td>{}</td><td>{}</td><td style="background-color:{}">{}</td></tr>'.format(
@@ -265,14 +265,14 @@ def mode_controller(session, args):
         elif status in [None, 'Empty']:
             color = '#eb7d34'
             unknown_counter += 1
-            exitcode.append(3)
+            exitcode.append(ExitCodes.NAGIOS_UNKNOWN.value)
         elif status in ['Warning']:
             color = '#ffa500'
             warn_counter += 1
-            exitcode.append(2)
+            exitcode.append(ExitCodes.NAGIOS_WARNING.value)
         else:
             state = "CRITICAL"
-            exitcode.append(1)
+            exitcode.append(ExitCodes.NAGIOS_CRITICAL.value)
             color = '#ff5b33'
         component_counter += 1
         output_list.append('<tr><td>{}</td><td>{}</td><td style="background-color:{}">{}</td></tr>'.format(
@@ -308,14 +308,14 @@ def mode_dellsystem(session, args):
                     elif status in [None, 'Empty']:
                         color = '#eb7d34'
                         unknown_counter += 1
-                        exitcode.append(3)
+                        exitcode.append(ExitCodes.NAGIOS_UNKNOWN.value)
                     elif status in ['Warning']:
                         color = '#ffa500'
                         warn_counter += 1
-                        exitcode.append(2)
+                        exitcode.append(ExitCodes.NAGIOS_WARNING.value)
                     else:
                         state = "CRITICAL"
-                        exitcode.append(1)
+                        exitcode.append(ExitCodes.NAGIOS_CRITICAL.value)
                         color = '#ff5b33'
                     component_counter += 1
                     output_list.append('<tr><td>{}</td><td style="background-color:{}">{}</td></tr>'.format(
@@ -348,14 +348,14 @@ def mode_health(session, args):
         elif status in [None, 'Empty']:
             color = '#eb7d34'
             unknown_counter += 1
-            exitcode.append(3)
+            exitcode.append(ExitCodes.NAGIOS_UNKNOWN.value)
         elif status in ['Warning']:
             color = '#ffa500'
             warn_counter += 1
-            exitcode.append(2)
+            exitcode.append(ExitCodes.NAGIOS_WARNING.value)
         else:
             state = "CRITICAL"
-            exitcode.append(1)
+            exitcode.append(ExitCodes.NAGIOS_CRITICAL.value)
             color = '#ff5b33'
         component_counter += 1
         output_list.append('<tr><td>{}</td><td>{}</td><td style="background-color:{}">{}</td></tr>'.format(
@@ -409,9 +409,9 @@ if __name__ == '__main__':
         output, exitcode = mode(session, a)
 
         print(output)
-        if ExitCodes.NAGIOS_CRITICAL in exitcode:
+        if ExitCodes.NAGIOS_CRITICAL.value in exitcode:
             sys.exit(ExitCodes.NAGIOS_CRITICAL.value)
-        elif ExitCodes.NAGIOS_WARNING in exitcode:
+        elif ExitCodes.NAGIOS_WARNING.value in exitcode:
             sys.exit(ExitCodes.NAGIOS_WARNING.value)
         else:
             sys.exit(ExitCodes.NAGIOS_OK.value)
